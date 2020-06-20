@@ -1,0 +1,14 @@
+.titulo {
+    text-align: center;
+    background-color: #2cb9f0;
+    height: 75px;
+    line-height: 75px;
+    width: 100%;
+    display: block;
+    margin: 0px auto;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #4f4f4f;
+    box-shadow: 1px 1px 1px black;
+    
+}
