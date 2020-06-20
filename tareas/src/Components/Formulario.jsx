@@ -1,9 +1,8 @@
 import React, { Fragment, useState } from 'react'
-import { v4 as uuid } from 'uuid'
-import PropTypes from 'prop-types'
-const Formulario = ({ crearCita }) => {
-  // Crear State de citas
-  const [cita, actualizarCita] = useState({
+import shortid from 'shortid'
+const Formulario = ({ crearTarea }) => {
+  // crear State de tareas
+  const [tarea, actualizarTarea] = useState({
     nombreTarea: '',
     propietario: '',
     fecha: '',
@@ -11,50 +10,38 @@ const Formulario = ({ crearCita }) => {
     descripcion: ''
   })
 
+  // crear state de error
+
   const [error, actualizarError] = useState(false)
 
-  // Funcion que se ejecuta el escribir en un input
+  // Funcion que se ejectua al escribir en un input
   const actualizarState = e => {
-    actualizarCita({
-      ...cita,
+    actualizarTarea({
+      ...tarea,
       [e.target.name]: e.target.value
     })
   }
 
-  //   Extraer valores
+  // Extraer valores de la tarea
+  const { nombreTarea, propietario, fecha, hora, descripcion } = tarea
+  // Al presionar enviar formulario
 
-  const { nombreTarea, propietario, fecha, hora, descripcion } = cita
-
-  //   Al presionar enviar formulario
-
-  const submitCita = e => {
+  const sumbitTarea = e => {
     e.preventDefault()
-
-    // Validar
-    if (
-      nombreTarea.trim() === '' ||
-      propietario.trim() === '' ||
-      fecha.trim() === '' ||
-      hora.trim() === '' ||
-      descripcion.trim() === ''
-    ) {
+    if (nombreTarea.trim() === '' || propietario.trim() === '') {
       actualizarError(true)
       return
     } else {
-      //Eliminar el mensaje previo de error
-
       actualizarError(false)
 
       // Asignar ID
-      cita.id = uuid()
-      console.log(cita)
-      // Crear la Cita
+      tarea.id = shortid.generate()
 
-      crearCita(cita)
+      // Crear la tarea
+      crearTarea(tarea)
 
-      // Reiniciar el form}
-
-      actualizarCita({
+      // Reiniciar el formulario
+      actualizarTarea({
         nombreTarea: '',
         propietario: '',
         fecha: '',
@@ -67,10 +54,10 @@ const Formulario = ({ crearCita }) => {
     <Fragment>
       <h2>Crear Tarea</h2>
       {error ? (
-        <p className='alerta-error'>Todos los campos son obligatorios</p>
+        <p className='alerta-error'>Nombre y destinatario obligatorios</p>
       ) : null}
-      <form className='formulario' onSubmit={submitCita}>
-        <label>Nombre Tarea</label>
+      <form className='formulario' onSubmit={sumbitTarea}>
+        <label>Nombre de la Tarea</label>
         <input
           type='text'
           name='nombreTarea'
@@ -79,7 +66,7 @@ const Formulario = ({ crearCita }) => {
           onChange={actualizarState}
           value={nombreTarea}
         ></input>
-        <label>Para quien es ?</label>
+        <label>Para quien es?</label>
         <input
           type='text'
           name='propietario'
@@ -88,7 +75,6 @@ const Formulario = ({ crearCita }) => {
           onChange={actualizarState}
           value={propietario}
         ></input>
-
         <label>Fecha</label>
         <input
           type='date'
@@ -97,7 +83,6 @@ const Formulario = ({ crearCita }) => {
           onChange={actualizarState}
           value={fecha}
         ></input>
-
         <label>Hora estimada</label>
         <input
           type='time'
@@ -106,8 +91,7 @@ const Formulario = ({ crearCita }) => {
           onChange={actualizarState}
           value={hora}
         ></input>
-
-        <label>Descripción</label>
+        <label>Descripcion</label>
         <textarea
           className='u-full-width'
           name='descripcion'
@@ -115,7 +99,6 @@ const Formulario = ({ crearCita }) => {
           onChange={actualizarState}
           value={descripcion}
         ></textarea>
-
         <button type='submit' className='u-full-width button-primary my-button'>
           Agregar Tarea
         </button>
@@ -123,7 +106,5 @@ const Formulario = ({ crearCita }) => {
     </Fragment>
   )
 }
-Formulario.propTypes = {
-  crearCita: PropTypes.func.isRequired
-}
+
 export default Formulario

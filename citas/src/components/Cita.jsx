@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Cita = ({ cita, eliminarCita }) => (
   <div className='cita'>
-    <p className='nombreMascota'>{cita.mascota}</p>
+    <p className='nombreMascota'>{cita.nombreTarea}</p>
     <p>
       Propietario: <span>{cita.propietario}</span>
     </p>
@@ -14,7 +14,7 @@ const Cita = ({ cita, eliminarCita }) => (
       Hora: <span>{cita.hora}</span>
     </p>
     <p>
-      Síntomas: <span>{cita.sintomas}</span>
+      Descripción: <span>{cita.descripcion}</span>
     </p>
     <button
       className='button eliminar u-full-width'

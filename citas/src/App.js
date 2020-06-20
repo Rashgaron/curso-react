@@ -46,10 +46,10 @@ function App() {
   console.log(citas.length);
 
   const titulo =
-    citas.length === 0 ? "No hay ninguna cita" : "Administra tus citas";
+    citas.length === 0 ? "No hay ninguna tarea actualmente" : "Administra tus tareas";
   return (
     <Fragment>
-      <h1>Administrador de Pacientes</h1>
+      <h1>Administrador de Tareas</h1>
 
       <div className="container">
         <div className="row">
