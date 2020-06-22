@@ -1,10 +1,17 @@
 import React from 'react';
+import './Dato.css';
 const Dato = ({ dato, eliminarDato }) => {
 	return (
-		<div>
-			<p>Nombre: {dato.nombre}</p>
-			<p>Apellido: {dato.apellido}</p>
-			<p>Edad: {dato.edad}</p>
+		<div className="contenedor">
+			<p>
+				<span>Nombre:</span> {dato.nombre}
+			</p>
+			<p>
+				<span>Apellido:</span> {dato.apellido}
+			</p>
+			<p>
+				<span>Edad:</span> {dato.edad}
+			</p>
 			<button type="button" class="btn btn-danger" onClick={() => eliminarDato(dato.id)}>
 				Eliminar
 			</button>

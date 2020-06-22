@@ -48,7 +48,7 @@ const Formulario = ({ crearDato }) => {
   return (
     <Fragment>
       <h2>Añadir usuario</h2>
-      {error ? <p>Es necesario rellenar todos los campos.</p> : null}
+      {error ? <p className='alert-error'>Es necesario rellenar todos los campos.</p> : null}
       <form onSubmit={submitDato}>
         <label>Nombre:</label>
         <input

@@ -1,0 +1,12 @@
+.contenedor{
+    background-color: #fec254;
+    margin-right: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.contenedor span{
+    text-transform: uppercase;
+    font-weight: bold;
+}

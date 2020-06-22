@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 import Dato from './components/Dato';
+import './App.css'
 function App() {
 	// Datos en local storage
 	// Por algún DeviceMotionEvent, si está vacío inicialmente peta
@@ -34,6 +35,7 @@ function App() {
 		const nuevosDatos = datos.filter((dato) => dato.id !== id);
 		guardarDatos(nuevosDatos);
 	};
+	const titulo = datos.length === 0 ? 'No hay usuarios registrados' : 'Resumen de los usuarios';
 	return (
 		<Fragment>
 			<div className="row justify-content-center">
@@ -41,12 +43,12 @@ function App() {
 					<Header titulo="Tienda virtual" />
 				</div>
 			</div>
-			<div className="row">
-				<div className="col-6">
+			<div className="row justify-content-center">
+				<div className="col-4">
 					<Formulario crearDato={crearDato} />
 				</div>
-				<div className="col-6">
-					<p>Aquí van a ir todos los nuevos usuarios</p>
+				<div className="col-4">
+					<p className='titulo-datos'>{titulo}</p>
 					{datos.map((dato) => <Dato key={dato.id} dato={dato} eliminarDato={eliminarDato} />)}
 				</div>
 			</div>
