@@ -37,22 +37,45 @@ const Heading = styled.h1`
 `;
 
 function App() {
+  var datosIniciales = JSON.parse(localStorage.getItem("myData"));
+
   const [moneda, guardarMoneda] = useState("");
   const [criptomoneda, guardarCriptomoneda] = useState("");
   const [cotizacion, guardarCotizacion] = useState({});
+  const [state, guardarState] = useState({
+    moneda: "",
+    criptomoneda: "",
+    cotizacion: "",
+  });
 
   useEffect(() => {
     const cotizarCriptomoneda = async () => {
       // Evitamos ejecución la primera vez
-      if (moneda === "") return;
+      if (moneda === "") {
+        return;
+      }
 
       const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
 
       const resultado = await axios.get(url);
       guardarCotizacion(resultado.data.DISPLAY[criptomoneda][moneda]);
+      guardarState({
+        moneda: moneda,
+        criptomoneda: criptomoneda,
+        cotizacion: resultado.data.DISPLAY[criptomoneda][moneda],
+      });
     };
     cotizarCriptomoneda();
-  }, [moneda, criptomoneda]);
+
+    var datosIniciales = JSON.parse(localStorage.getItem("myData"));
+    if (datosIniciales) {
+      localStorage.setItem("myData", JSON.stringify(state));
+      guardarCotizacion(datosIniciales.cotizacion);
+    } else {
+      localStorage.setItem("myData", JSON.stringify({}));
+    }
+  }, [moneda, criptomoneda, state]);
+
   return (
     <Contenedor>
       <div>
@@ -63,10 +86,12 @@ function App() {
         <Formulario
           guardarMoneda={guardarMoneda}
           guardarCriptomoneda={guardarCriptomoneda}
+          monedaInicial={datosIniciales.moneda}
+          criptomonedaInicial={datosIniciales.criptomoneda}
         ></Formulario>
-        <Cotizacion resultado ={cotizacion}></Cotizacion>
+        <Cotizacion cotizacion={cotizacion}></Cotizacion>
       </div>
-      </Contenedor>
+    </Contenedor>
   );
 }
 

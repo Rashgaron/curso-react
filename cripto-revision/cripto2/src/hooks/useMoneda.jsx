@@ -20,7 +20,7 @@ const Select = styled.select`
   font-size: 1.2rem;
 `
 
-const useMoneda = (mensaje, stateInicial, opciones) => {
+const useMoneda = (mensaje, stateInicial, opciones, monedaInicial) => {
   // State de nuestro custom hooks
 
   const [state, actualizarState] = useState(stateInicial)

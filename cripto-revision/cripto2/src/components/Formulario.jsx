@@ -22,7 +22,7 @@ const Boton = styled.input`
 `
 // Ejecutar llamado a la API
 
-const Formulario = ({ guardarMoneda, guardarCriptomoneda }) => {
+const Formulario = ({ guardarMoneda, guardarCriptomoneda, monedaInicial, criptomonedaInicial }) => {
   // state del listado de criptomonedas
   const [listaCripto, guardarCriptomonedas] = useState([])
   const [error, guardarError] = useState(false)
@@ -30,10 +30,10 @@ const Formulario = ({ guardarMoneda, guardarCriptomoneda }) => {
     { codigo: 'USD', nombre: 'Dolar de Estados Unidos' },
     { codigo: 'MXN', nombre: 'Peso Mexicano' },
     { codigo: 'EUR', nombre: 'Euro' },
-    { codigo: 'GDP', nombre: 'Libra Esterlina' },
-    { codigo: 'COD', nombre: 'Peso Colombiano' }
+    { codigo: 'GBP', nombre: 'Libra Esterlina' },
+    { codigo: 'COP', nombre: 'Peso Colombiano' }
   ]
-  const [moneda, SelectMonedas] = useMoneda('Elige tu Moneda', '', MONEDAS)
+  const [moneda, SelectMonedas] = useMoneda('Elige tu Moneda', '', MONEDAS,monedaInicial)
 
   const [criptomoneda, SelectCripto] = useCriptomoneda(
     'Elige tu Criptomoneda',
@@ -67,8 +67,8 @@ const Formulario = ({ guardarMoneda, guardarCriptomoneda }) => {
       {error ? (
         <Error mensaje='Todos los campos son obligatorios'></Error>
       ) : null}
-      <SelectMonedas></SelectMonedas>
-      <SelectCripto></SelectCripto>
+      <SelectMonedas ></SelectMonedas>
+      <SelectCripto ></SelectCripto>
       <Boton type='submit' value='Calcular'></Boton>
     </form>
   )
