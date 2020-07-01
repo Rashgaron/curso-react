@@ -1,0 +1,24 @@
+#enlace_titulo{
+    color: black;
+    text-align: center;
+}
+#enlace_titulo:hover{
+    text-transform: none;
+  
+}
+a:hover{text-decoration: none;}
+
+.active_link{
+    background-color: #e8a86575;
+}
+.nav_link:hover{
+    background-color: rgba(128, 128, 128, 0.198);
+}
+
+
+@media only screen and (max-width:574px){
+    a h2{
+        font-size: 20px;
+        
+    }
+}
