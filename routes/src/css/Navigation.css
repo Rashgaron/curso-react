@@ -6,8 +6,10 @@
     text-transform: none;
   
 }
-a:hover{text-decoration: none;}
-
+a:hover{text-decoration: none !important;}
+a{
+    transition: all .3s;
+}
 .active_link{
     background-color: #e8a86575;
 }

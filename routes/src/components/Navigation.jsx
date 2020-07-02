@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import '../css/Navigation.css'
+
 const Navigation = () => {
+
   return (
     <Fragment>
       <div className='row bg-light'>
@@ -48,12 +50,12 @@ const Navigation = () => {
         <div className='col col-s-3 col-md-6 p-2 '>
           <div>
             <a href='/'>
-              <h2 id='enlace_titulo'>Muebles Mariano</h2>
+              <h2 id='enlace_titulo' data-aos='fade-left'>
+                Muebles Mariano
+              </h2>
             </a>
           </div>
-
         </div>
-
       </div>
     </Fragment>
   )
