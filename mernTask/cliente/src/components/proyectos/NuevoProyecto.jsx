@@ -1,36 +1,36 @@
 import React, { Fragment, useState } from 'react'
 const NuevoProyecto = () => {
+  //State para Proyecto
 
-    //State para Proyecto
+  const [proyecto, guardarProyecto] = useState({
+    nombre: ''
+  })
 
-    const [proyecto, guardarProyecto] = useState({
-        nombre:''
+  const { nombre } = proyecto
+
+  const onChangeProyecto = e => {
+    guardarProyecto({
+      ...proyecto,
+      [e.target.name]: e.target.value
     })
+  }
 
-    const {nombre} = proyecto
+  const onSubmitProyecto = e => {
+    e.preventDefault()
 
-    const onChangeProyecto=e=>{
-        guardarProyecto({
-            ...proyecto, [e.target.name]:e.target.value
-        })
-    }
+    //Validar proyecto
 
-    const onSubmitProyecto=e=>{
-        e.preventDefault();
+    //Agregar al State
 
-        //Validar proyecto
-
-        //Agregar al State
-
-        //Reiniciar el form
-    }
+    //Reiniciar el form
+  }
   return (
     <Fragment>
       <button type='button' className='btn btn-block btn-primario'>
         Nuevo Proyecto
       </button>
 
-      <form className='formulario-nuevo-proyecto'>
+      <form className='formulario-nuevo-proyecto' onSubmit={onSubmitProyecto}>
         <input
           type='text'
           className='input-text'
