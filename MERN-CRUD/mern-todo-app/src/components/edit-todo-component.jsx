@@ -15,6 +15,7 @@ const EditTodo = ({ match }) => {
       axios
         .get('http://localhost:4000/todos/' + match.params.id)
         .then(response => {
+          console.log(match.params.id)
           saveNewTodo({
             todo_description: response.data.todo_description,
             todo_responsible: response.data.todo_responsible,
@@ -27,7 +28,7 @@ const EditTodo = ({ match }) => {
         })
     }
     componentDidMount()
-  }, [])
+  }, [match.params.id])
 
   // console.log(match.params.id)
 

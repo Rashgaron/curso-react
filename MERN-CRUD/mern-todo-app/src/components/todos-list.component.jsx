@@ -28,6 +28,7 @@ const TodosList = () => {
             <th>Responsible</th>
             <th>Priority</th>
             <th>Action</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>

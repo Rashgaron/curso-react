@@ -20,7 +20,7 @@ class App extends Component {
             <a
               className="navbar-brand"
               href="https://codingthesmartway.com"
-              target="_blank"
+              
             >
               <img
                 src={logo}
