@@ -8,7 +8,7 @@ const TodosList = () => {
   useEffect(() => {
     const componentDidMount = () => {
       axios
-        .get('http://localhost:4000/todos')
+        .get('https://backend-crud.herokuapp.com/todos')
         .then(response => {
           saveTodos(response.data)
         })

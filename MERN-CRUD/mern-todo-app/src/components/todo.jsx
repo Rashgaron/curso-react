@@ -7,7 +7,7 @@ const Todo = ({ todo }) => {
 	const deleteTodo = () => {
 		const componentDidMount = () => {
 			axios
-				.post('http://localhost:4000/todos/delete/' + todo._id)
+				.post('https://backend-crud.herokuapp.com/todos/delete/' + todo._id)
 				.then(console.log('Eliminado con éxito'))
 				.catch(function(err) {
 					console.log(err);

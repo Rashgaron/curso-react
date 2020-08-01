@@ -26,16 +26,11 @@ const CreateTodo = () => {
 		}
 		guardarError(false);
 		axios
-			.post('http://localhost:4000/todos/add', create)
+			.post('https://backend-crud.herokuapp.com/todos/add', create)
 			.then((res) => console.log(res.data))
 			.catch((err) => console.log(err));
 
-		// fetch('http://localhost:4000/todos/add',{
-		//   method:'post',
-		//   body:create,
-		// }).then(function(response){
-		//   return response.json();
-		// })
+
 		SaveCreate({
 			todo_description: '',
 			todo_responsible: '',

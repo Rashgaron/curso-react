@@ -13,7 +13,7 @@ const EditTodo = ({ match }) => {
   useEffect(() => {
     const componentDidMount = () => {
       axios
-        .get('http://localhost:4000/todos/' + match.params.id)
+        .get('https://backend-crud.herokuapp.com/todos/' + match.params.id)
         .then(response => {
           console.log(match.params.id)
           saveNewTodo({
