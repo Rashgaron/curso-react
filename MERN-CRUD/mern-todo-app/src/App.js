@@ -1,10 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// import CreateTodo from "./components/create-todo.component";
-// import EditTodo from "./components/edit-todo.component";
 import CreateTodo from "./components/create-todo.component";
 import TodosList from "./components/todos-list.component";
 import EditTodo from "./components/edit-todo-component";
@@ -16,37 +13,20 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <nav className="navbar  navbar-light bg-light">
-            <a
-              className="navbar-brand"
-              href="https://codingthesmartway.com"
-              
-            >
-              <img
-                src={logo}
-                width="30"
-                height="30"
-                alt="CodingTheSmartWay.com"
-              />
-            </a>
-            <Link to="/" className="navbar-brand">
-              MERN-Stack Todo App
-            </Link>
-            <div className="collapse navbar-collapse">
-              <ul className="navbar-nav mr-auto">
-                <li className="navbar-item">
-                  <Link to="/" className="nav-link">
-                    Todos
-                  </Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/create" className="nav-link">
-                    Create Todo
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <Navbar bg="light" expand="lg">
+            <Navbar.Brand href="#home">MERN-STACK Todo App</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Link to="/" className="nav-link">
+                  Todos
+                </Link>
+                <Link to="/create" className="nav-link">
+                  Create Todo
+                </Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
           <br />
 
           <Route path="/" exact component={TodosList} />
