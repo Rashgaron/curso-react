@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tarea{
+  margin: 5px;
+  padding: 5px;
+  box-shadow: 1px 1px 5px #ccc;
+  border-radius: 5px;
+}
+
+
+.formulario{
+  box-shadow: 1px 1px 5px #eee;
+  border-radius: 5px;
+  
+}
