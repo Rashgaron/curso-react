@@ -1,34 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { CategoriasContext } from '../context/CategoriasContext'
-import { RecetasContext } from '../context/RecetasContext'
 const Formulario = () => {
   const { categorias } = useContext(CategoriasContext)
-  const { buscarRecetas, guardarConsultar } = useContext(RecetasContext)
-
-  const [busqueda, guardarBusqueda] = useState({
-    nombre: '',
-    categoria: ''
-  })
-
-  //   funcion para leer los contenidos
-
-  const obtenerDatosReceta = e => {
-    guardarBusqueda({
-      ...busqueda,
-      [e.target.name]: e.target.value
-    })
-  }
   return (
-    <form
-      className='col-12'
-      onSubmit={e => {
-        e.preventDefault()
-        buscarRecetas(busqueda)
-        guardarConsultar(true)
-      }}
-    >
+    <form className='col-12'>
       <fieldset className='text-center'>
-        <legend>Busca bebidas por categoría o ingrediente</legend>
+        <legend>Busca bebidas por Categoria o Ingrediente</legend>
       </fieldset>
       <div className='row mt-4'>
         <div className='col-md-4'>
@@ -36,26 +13,20 @@ const Formulario = () => {
             name='nombre'
             className='form-control'
             type='text'
-            placeholder='Buscar por ingrediente'
-            onChange={obtenerDatosReceta}
+            placeholder='Buscar por Ingrediente'
           ></input>
         </div>
         <div className='col-md-4'>
-          <select
-            className='form-control'
-            onChange={obtenerDatosReceta}
-            name='categoria'
-          >
-            <option value=''>Selecciona Categoría</option>
-            {categorias.map(cat => {
-              return (
-                <option key={cat.strCategory} value={cat.strCategory}>
-                  {cat.strCategory}
-                </option>
-              )
-            })}
+          <select className='form-control' name='categoria'>
+            <option value=''>-- Selecciona Categoría --</option>
+            {categorias.map(opt => (
+              <option value={opt.strCategory} key={opt.strCategory}>
+                {opt.strCategory}
+              </option>
+            ))}
           </select>
         </div>
+
         <div className='col-md-4'>
           <input
             type='submit'

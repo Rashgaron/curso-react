@@ -1,0 +1,1 @@
+export const  GUARDAR_DATO ='GUARDAR_DATO'

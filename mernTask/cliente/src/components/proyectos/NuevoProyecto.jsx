@@ -1,9 +1,16 @@
 import React, { Fragment, useState, useContext } from 'react'
-import ProyectoContext from '../../context/proyectos/proyectoContext'
+import proyectoContext from '../../context/proyectos/proyectoContext'
 const NuevoProyecto = () => {
   // Obtener el state del formulario
-  const proyectosContext = useContext(ProyectoContext)
-  const { formulario, mostrarFormulario, agregarProyecto } = proyectosContext
+  const proyectosContext = useContext(proyectoContext)
+
+  const {
+    formulario,
+    errorformulario,
+    mostrarFormulario,
+    agregarProyecto,
+    mostrarError
+  } = proyectosContext
 
   //State para Proyecto
 
@@ -25,6 +32,7 @@ const NuevoProyecto = () => {
 
     //Validar proyecto
     if (nombre === '') {
+      mostrarError()
       return
     }
     //Agregar al State
@@ -34,7 +42,7 @@ const NuevoProyecto = () => {
       nombre: ''
     })
   }
-
+  if (formulario) console.log('formulario esta visible')
   return (
     <Fragment>
       <button
@@ -62,6 +70,9 @@ const NuevoProyecto = () => {
             value='Agregar Proyecto'
           ></input>
         </form>
+      ) : null}
+      {errorformulario ? (
+        <p className='mensaje error'>El nombre es obligatorio</p>
       ) : null}
     </Fragment>
   )
