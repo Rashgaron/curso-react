@@ -6,12 +6,13 @@ const Listado = () => {
     const datosContext = useContext(datoContext)
     const {dato} = datosContext
 
+    const {tipo, tema} = dato
     const [resultado, guardarResultados] = useState([])
     useEffect(() => {
         async function getDataApi() {
           try {
             const response = await fetch(
-              `https://api.giphy.com/v1/${dato.tipo}/search?api_key=7qj1Et2gYJqhCyGzxDnwopSWmif2v9Gd&q=${dato.tema}&limit=25&offset=0&rating=r}&lang=es`
+              `https://api.giphy.com/v1/${tipo}/search?api_key=7qj1Et2gYJqhCyGzxDnwopSWmif2v9Gd&q=${tema}&limit=25&offset=0&rating=r}&lang=es`
             );
             const data = await response.json();
             console.log(data.data);
@@ -21,10 +22,10 @@ const Listado = () => {
           }
         }
     
-        
+        if(tema!=='')
           getDataApi();
         
-      }, [dato]);
+      }, [tipo,tema]);
 
   //  resultados
   return (

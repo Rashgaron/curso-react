@@ -4,7 +4,10 @@ import datoReducer from './datoReducer'
 import { GUARDAR_DATO } from '../types'
 const DatoState = props => {
   const initialState = {
-    dato: { }
+    dato: { 
+      tema:'',
+      tipo:''
+    }
   }
 
   const [state, dispatch] = useReducer(datoReducer, initialState)
