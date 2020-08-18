@@ -5,20 +5,44 @@ import NuevaCuenta from "./components/auth/NuevaCuenta";
 import Proyectos from "./components/proyectos/Proyectos";
 import ProyectoState from "./context/proyectos/proyectoState";
 import TareaState from "./context/tareas/tareaState";
+import AlertaState from "./context/alertas/alertaState";
+import AuthState from "./context/autenticacion/authState";
+import tokenAuth from "./config/tokenAuth";
+import RutaPrivada from "./components/rutas/rutaPrivada";
+//Revisar si tenemos un token
+
+const token = localStorage.getItem("token");
+
+if (token) {
+  tokenAuth(token);
+}
 
 function App() {
+  console.log(process.env.REACT_APP_BACKEND_URL);
   return (
     <ProyectoState>
       <TareaState>
-        <div className="App">
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Login}></Route>
-              <Route exact path="/nueva-cuenta" component={NuevaCuenta}></Route>
-              <Route exact path="/proyectos" component={Proyectos}></Route>
-            </Switch>
-          </Router>
-        </div>
+        <AuthState>
+          <AlertaState>
+            <div className="App">
+              <Router>
+                <Switch>
+                  <Route exact path="/" component={Login}></Route>
+                  <Route
+                    exact
+                    path="/nueva-cuenta"
+                    component={NuevaCuenta}
+                  ></Route>
+                  <RutaPrivada
+                    exact
+                    path="/proyectos"
+                    component={Proyectos}
+                  ></RutaPrivada>
+                </Switch>
+              </Router>
+            </div>
+          </AlertaState>
+        </AuthState>
       </TareaState>
     </ProyectoState>
   );

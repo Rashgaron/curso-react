@@ -1,5 +1,6 @@
 const express = require("express");
 const conectarDB = require("./config/db");
+const cors = require("cors");
 // Crear el servidor
 
 const app = express();
@@ -7,6 +8,10 @@ const app = express();
 // Conectar a la base de datos
 
 conectarDB();
+
+// Habilitar cors
+
+app.use(cors());
 
 // Habilitar express.json
 
@@ -23,6 +28,8 @@ app.use("/api/auth", require("./routes/auth"));
 
 app.use("/api/proyectos", require("./routes/proyectos"));
 
+app.use("/api/tareas", require("./routes/tareas"));
+
 // Definir la página principal
 
 app.get("/", (req, res) => {
@@ -31,5 +38,5 @@ app.get("/", (req, res) => {
 
 // arrancar la app
 app.listen(PORT, () => {
-  console.log(`El servidor esta funcionando en el puerto ${PORT}`);
+  console.log(`Server running on port -> ${PORT}`);
 });

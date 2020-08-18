@@ -13,6 +13,7 @@ module.exports = function (req, res, next) {
 
   try {
     const cifrado = jwt.verify(token, process.env.SECRETA);
+    // console.log(cifrado)
     req.usuario = cifrado.usuario;
     next()
   } catch (err) {

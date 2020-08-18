@@ -1,12 +1,34 @@
-import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
-const NuevaCuenta = () => {
+import React, { useState, useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import alertaContext from '../../context/alertas/alertaContext'
+import AuthContext from '../../context/autenticacion/authContext'
+import axios from 'axios'
+const NuevaCuenta = props => {
+  // Obtener el context
+
+  const alertasContext = useContext(alertaContext)
+  const { alerta, mostrarAlerta } = alertasContext
+
+  const authContext = useContext(AuthContext)
+  const { mensaje, autenticado, registrarUsuario } = authContext
+
+  // En caso de que el usuario se haya autenticado
+  // o registrado o sea un registro duplicado
+
+  useEffect(() => {
+    if (autenticado) props.history.push('/proyectos')
+
+    if (mensaje) {
+      mostrarAlerta(mensaje.msg, mensaje.categoria)
+    }
+  }, [mensaje, autenticado, props.history])
+
   // State para iniciar sesión
   const [usuario, guardarUsuario] = useState({
     email: '',
-    nombre:'',
+    nombre: '',
     password: '',
-    confirmar:'',
+    confirmar: ''
   })
   const [error, guardarError] = useState(false)
   const { email, nombre, password, confirmar } = usuario
@@ -16,33 +38,51 @@ const NuevaCuenta = () => {
       [dato.target.name]: dato.target.value
     })
   }
-  const handleSubmit=(e)=>{
-      e.preventDefault()
+  const handleSubmit = e => {
+    e.preventDefault()
 
-      //Validar campos no vacíos
+    //Validar campos no vacíos
 
-      if(email===''|| password===''|| nombre===''|| confirmar !== password || password.length<6){
-          guardarError(true)
-          return
-      }
-      else{
-          guardarError(false)
-      //Pasarlo al action
-
-        guardarUsuario({
-            nombre:'',
-            email:'',
-            password:'',
-            confirmar:''
-        })
+    if (
+      password.trim() === '' ||
+      email.trim() === '' ||
+      nombre.trim() === '' ||
+      confirmar.trim() === ''
+    ) {
+      mostrarAlerta('Todos los campos son obligatorios', 'alerta-error')
+      // guardarError(true)
+      return
     }
+
+    // Password 6 caracteres mínimo
+
+    if (password.length < 6) {
+      mostrarAlerta('Password de al menos 6 carácteres', 'alerta-error')
+      return
+    }
+
+    if (password !== confirmar) {
+      mostrarAlerta('Los passwords no son iguales', 'alerta-error')
+      return
+    }
+
+    // Pasarlo al action
+
+    registrarUsuario({
+      nombre,
+      email,
+      password
+    })
   }
   return (
     <div className='form-usuario'>
+      {alerta ? (
+        <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
+      ) : null}
       <div className='contenedor-form sombra-dark'>
         <h1>Obtener cuenta</h1>
         <form onSubmit={handleSubmit}>
-        <div className='campo-form'>
+          <div className='campo-form'>
             <label htmlFor='email'>Nombre</label>
             <input
               type='text'
@@ -95,7 +135,7 @@ const NuevaCuenta = () => {
           </div>
         </form>
         <Link to={'/'} className='enlace-cuenta'>
-            Volver a Iniciar Sesión
+          Volver a Iniciar Sesión
         </Link>
       </div>
     </div>

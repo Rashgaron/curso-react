@@ -21,6 +21,8 @@ const ListadoTareas = () => {
   const [proyectoActual] = proyecto
   // Si no hay proyecto seleccionado
 
+
+  console.log(proyectoActual._id)
   return (
     <Fragment>
       <h2>Proyecto: {proyectoActual.nombre}</h2>
@@ -46,7 +48,7 @@ const ListadoTareas = () => {
         type='button'
         className='btn btn-eliminar'
         onClick={() => {
-          eliminarProyecto(proyectoActual.id)
+          eliminarProyecto(proyectoActual._id)
         }}
       >
         Eliminar Proyecto &times;

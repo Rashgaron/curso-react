@@ -25,7 +25,7 @@ const Proyecto = ({ proyecto }) => {
         type='button'
         className='btn btn-black'
         onClick={() => {
-          seleccionarProyecto(proyecto.id)
+          seleccionarProyecto(proyecto._id)
         }}
       >
         {proyecto.nombre}
