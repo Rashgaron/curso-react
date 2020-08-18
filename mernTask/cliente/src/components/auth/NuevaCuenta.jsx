@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import alertaContext from '../../context/alertas/alertaContext'
 import AuthContext from '../../context/autenticacion/authContext'
-import axios from 'axios'
 const NuevaCuenta = props => {
   // Obtener el context
 
@@ -21,6 +20,7 @@ const NuevaCuenta = props => {
     if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria)
     }
+    // eslint-disable-next-line
   }, [mensaje, autenticado, props.history])
 
   // State para iniciar sesión
@@ -30,7 +30,6 @@ const NuevaCuenta = props => {
     password: '',
     confirmar: ''
   })
-  const [error, guardarError] = useState(false)
   const { email, nombre, password, confirmar } = usuario
   const onChange = dato => {
     guardarUsuario({

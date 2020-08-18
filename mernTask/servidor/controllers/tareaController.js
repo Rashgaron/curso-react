@@ -41,7 +41,7 @@ exports.obtenerTareas = async (req, res) => {
   try {
     // Extraer el proyecto y comprobar si existe
 
-    const { proyecto } = req.body;
+    const { proyecto } = req.query;
 
     const existeProyecto = await Proyecto.findById(proyecto);
     if (!existeProyecto) {
@@ -55,7 +55,9 @@ exports.obtenerTareas = async (req, res) => {
     }
 
     // Obtener las tareas por proyecto
-    const tareas = await Tarea.find({ proyecto: proyecto });
+    const tareas = await Tarea.find({ proyecto: proyecto }).sort({
+      creado: -1,
+    });
     res.json({ tareas });
   } catch (err) {
     console.log(err);
@@ -91,12 +93,9 @@ exports.actualizarTarea = async (req, res) => {
 
     const nuevaTarea = {};
 
-    if (nombre) {
-      nuevaTarea.nombre = nombre;
-    }
-    if (estado) {
-      nuevaTarea.estado = estado;
-    }
+    nuevaTarea.nombre = nombre;
+
+    nuevaTarea.estado = estado;
 
     // Guardar la Tarea
 
@@ -112,29 +111,24 @@ exports.actualizarTarea = async (req, res) => {
 
 exports.eliminarTarea = async (req, res) => {
   try {
-
     // Extraer el proyecto
-    const { proyecto } = req.body;
+    const { proyecto } = req.query;
 
-    
-    const existeTarea = await Tarea.find({proyecto})
-    
+    const existeTarea = await Tarea.find({ proyecto });
 
-    if(!existeTarea){
-      return res.status(404).json({msg:'Tarea no existe'})
+    if (!existeTarea) {
+      return res.status(404).json({ msg: "Tarea no existe" });
     }
 
-    const existeProyecto = await Proyecto.findById(proyecto)
+    const existeProyecto = await Proyecto.findById(proyecto);
 
-    if(existeProyecto.creador.toString() !== req.usuario.id){
-      return res.status(401).json({msg:'No autorizado'})
+    if (existeProyecto.creador.toString() !== req.usuario.id) {
+      return res.status(401).json({ msg: "No autorizado" });
     }
 
+    await Tarea.findOneAndRemove({ _id: req.params.id });
 
-    await Tarea.findOneAndRemove({_id:req.params.id})
-
-    return res.status(200).json({msg:'Tarea eliminada'})
-
+    return res.status(200).json({ msg: "Tarea eliminada" });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ msg: "Hubo un error" });

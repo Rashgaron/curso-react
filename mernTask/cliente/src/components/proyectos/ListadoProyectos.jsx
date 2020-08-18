@@ -18,7 +18,7 @@ const ListadoProyectos = () => {
     }
     obtenerProyectos()
 
-    // eslint-disable-nextline
+    // eslint-disable-next-line
   }, [mensaje])
   // Revisar si hay proyectos
 
