@@ -1,5 +1,21 @@
-import React from 'react';
-const EditarProducto = () => {
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+const EditarProducto = ({history}) => {
+	const productoEditar = useSelector((state) => state.productos.productoeditar);
+
+	const [ producto, guardarProducto ] = useState({
+		nombre: '',
+		precio: 0
+	});
+	useEffect(() => {
+		if (productoEditar) guardarProducto(productoEditar);
+		else history.push('/')
+		// eslint-disable-next-line
+	}, []);
+
+	const { nombre, precio } = producto;
+
 	return (
 		<div className="row justify-content-center">
 			<div className="col-md-8">
@@ -15,6 +31,7 @@ const EditarProducto = () => {
 									type="text"
 									className="form-control"
 									placeholder="nombre producto"
+									value={nombre}
 								/>
 							</div>
 							<div className="form-group">
@@ -24,6 +41,7 @@ const EditarProducto = () => {
 									type="number"
 									className="form-control"
 									placeholder="Precio producto"
+									value={precio}
 								/>
 							</div>
 							<button

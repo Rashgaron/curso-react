@@ -1,59 +1,49 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
+      "nombre": "sda",
+      "precio": 5,
+      "id": 19
     },
     {
-      "id": 2,
-      "nombre": "Jugo de Naranja",
-      "precio": "1"
-    },
-    {
-      "nombre": "Jugo de Naranja",
-      "precio": "300",
-      "id": 3
-    },
-    {
-      "nombre": "Rib Eye 800g",
-      "precio": "200",
-      "id": 4
-    },
-    {
-      "nombre": "Jugo de Fresa",
-      "precio": "200",
-      "id": 5
-    },
-    {
-      "nombre": "paquete amazon",
-      "precio": 50,
-      "id": 6
-    },
-    {
-      "nombre": "mando tele",
-      "precio": 15,
-      "id": 7
+      "nombre": "fa",
+      "precio": 5,
+      "id": 20
     },
     {
       "nombre": "dasd",
-      "precio": 3,
-      "id": 8
+      "precio": 24,
+      "id": 21
     },
     {
-      "nombre": "dasd",
-      "precio": 3,
-      "id": 9
+      "nombre": "fggs",
+      "precio": 5,
+      "id": 22
     },
     {
-      "nombre": "mando t",
-      "precio": 2,
-      "id": 10
+      "nombre": "rytert",
+      "precio": 5,
+      "id": 23
     },
     {
-      "nombre": "movil",
-      "precio": 20,
-      "id": 11
+      "nombre": "asda",
+      "precio": 5,
+      "id": 24
+    },
+    {
+      "nombre": "gggg",
+      "precio": 5,
+      "id": 25
+    },
+    {
+      "nombre": "fasdasd",
+      "precio": 55,
+      "id": 26
+    },
+    {
+      "nombre": "fasfas",
+      "precio": 8,
+      "id": 27
     }
   ]
 }
