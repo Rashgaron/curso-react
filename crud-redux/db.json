@@ -1,16 +1,6 @@
 {
   "productos": [
     {
-      "nombre": "sda",
-      "precio": 5,
-      "id": 19
-    },
-    {
-      "nombre": "fa",
-      "precio": 5,
-      "id": 20
-    },
-    {
       "nombre": "dasd",
       "precio": 24,
       "id": 21
@@ -44,6 +34,11 @@
       "nombre": "fasfas",
       "precio": 8,
       "id": 27
+    },
+    {
+      "nombre": "cargador",
+      "precio": 8,
+      "id": 28
     }
   ]
 }
