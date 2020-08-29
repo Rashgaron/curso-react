@@ -27,11 +27,14 @@ const PORT = process.env.PORT || 4000;
 
 // Importar rutas
 
-app.use("/api/tareas",require("./routes/tareas"))
+app.use('/api/productos',require('./routes/productos'))
 
 app.use('/api/proyectos',require('./routes/proyectos'))
 
 app.use('/api/email',require('./routes/email'))
+
+
+app.use('/create-checkout-session',require('./routes/checkout'))
 // Defiir la página principal
 
 app.get('/', (req,res)=>{

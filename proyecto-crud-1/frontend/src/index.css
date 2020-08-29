@@ -1,0 +1,7 @@
+.producto{
+  /* background-color: #ccc; */
+  padding: 5px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #ddd;
+}
