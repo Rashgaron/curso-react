@@ -6,7 +6,7 @@ import clienteAxios from '../config/axios';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
-	'pk_test_51GtyGDCgn9UssWNywQiQAqtHafwbIq1cOfIvQo64EUi8XUL7s8GO0PD0OXJUga32JdXnJU147BvZKYLpQX88rFdr00CHSUV0c4'
+	'pk_live_k71uaWOjPRpOxhF2CWSUiNzh00X0UtsnG7'
 );
 
 const Producto = ({ producto }) => {
