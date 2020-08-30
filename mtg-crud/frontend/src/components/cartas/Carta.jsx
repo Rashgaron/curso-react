@@ -1,15 +1,23 @@
 import React, { useState, Fragment } from 'react'
+import {useDispatch} from 'react-redux'
+import {guardarCartasAction} from '../../actions/cartasActions'
 const Carta = ({ carta }) => {
+  const dispatch = useDispatch()
   const [cantidad, guardarCantidad] = useState(0)
 
   const handleClick = e => {
-    console.log(cantidad)
     if (cantidad === 0 && e < 0) return
     if (cantidad >= 0) guardarCantidad(cantidad + e)
 
-    console.log(cantidad)
   }
   if (!carta.image_uris) return null
+
+
+
+  const guardarCartas = carta =>{
+    carta.cantidad = cantidad;
+    dispatch(guardarCartasAction(carta))
+  }
   return (
     <Fragment>
       <div className='col-12 col-md-5 col-lg-4 col-xl-3  justify-content-center d-flex'>
@@ -40,6 +48,8 @@ const Carta = ({ carta }) => {
                   type='button'
                   className='btn btn-primary'
                   onClick={() => {
+                    
+                    guardarCartas(carta)
                     guardarCantidad(0)
                   }}
                 >

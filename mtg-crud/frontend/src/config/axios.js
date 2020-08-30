@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios'
 
 const clienteAxios = axios.create({
-  baseURL: "https://api.magicthegathering.io/v1/",
+  baseURL: "https://api.scryfall.com/cards/",
 });
 export default clienteAxios;

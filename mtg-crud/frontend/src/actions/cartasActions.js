@@ -2,26 +2,26 @@ import {
   BUSCAR_CARTA,
   BUSCAR_CARTA_ERROR,
   BUSCAR_CARTA_EXITO,
+  GUARDAR_CARTAS,
+  GUARDAR_CARTAS_EXITO,
+  GUARDAR_CARTAS_ERROR,
 } from "../types/index";
 
 import clienteAxios from "../config/axios";
 import Swal from "sweetalert2";
-import Axios from "axios";
 
 // Guardar Carta
 
 export function buscarCartaAction(carta) {
   return async (dispatch) => {
     dispatch(buscarCarta(carta));
-    console.log(carta);
     try {
       let resultado;
      
       
-        resultado = await Axios.get(`https://api.scryfall.com/cards/search?q=name%3A${carta.nombre}+lang%3A${carta.language}`)
+        resultado = await clienteAxios.get(`search?q=name%3A${carta.nombre}+lang%3A${carta.language}`)
   
         resultado = resultado.data.data
-        console.log(resultado)
    
       dispatch(buscarCartaExito(resultado));
     } catch (error) {
@@ -48,5 +48,27 @@ const buscarCartaError = () => ({
 // Guardar cartas
 
 export function guardarCartasAction(cartas){
-  
+  return (dispatch) =>{
+    dispatch(guardarCartas())
+    try {
+
+      dispatch( guardarCartasExito(cartas))
+    
+     } catch (error) {
+      console.log(error)
+      dispatch(guardarCartasError())
+    }
+  }
 }
+
+const guardarCartas = ()=>({
+  type:GUARDAR_CARTAS
+})
+const guardarCartasExito = cartas =>({
+  type:GUARDAR_CARTAS_EXITO,
+  payload:cartas
+})
+
+const guardarCartasError = ()=>({
+  type:GUARDAR_CARTAS_ERROR
+})
