@@ -3,7 +3,7 @@ import Buscar from '../ui/Buscar'
 import Navegacion from './Navegacion'
 import Link from 'next/link'
 import styled from '@emotion/styled'
-import {css} from '@emotion/core'
+import { css } from '@emotion/core'
 
 const ContenedorHeader = styled.div`
   max-width: 1200px;
@@ -15,16 +15,13 @@ const ContenedorHeader = styled.div`
   }
 `
 
-
 const Logo = styled.p`
-    color: var(--naranja);
-    font-size: 4rem;
-    line-height: 0;
-    font-weight:700;
-    font-family: 'Roboto Slab', serif;
-    margin-right:2rem;
-
-
+  color: var(--naranja);
+  font-size: 4rem;
+  line-height: 0;
+  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
+  margin-right: 2rem;
 `
 const Header = () => {
   return (
@@ -36,7 +33,10 @@ const Header = () => {
     >
       <ContenedorHeader>
         <div>
-          <Logo>P</Logo>
+          <Link href='/'>
+            <Logo>P</Logo>
+          </Link>
+
           {/*Buscador aqui*/}
           <Buscar></Buscar>
           {/*NAv aqui*/}
