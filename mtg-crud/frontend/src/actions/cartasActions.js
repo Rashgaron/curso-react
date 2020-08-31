@@ -51,7 +51,7 @@ export function guardarCartasAction(cartas){
   return (dispatch) =>{
     dispatch(guardarCartas())
     try {
-
+      console.log(cartas)
       dispatch( guardarCartasExito(cartas))
     
      } catch (error) {
@@ -64,7 +64,8 @@ export function guardarCartasAction(cartas){
 const guardarCartas = ()=>({
   type:GUARDAR_CARTAS
 })
-const guardarCartasExito = cartas =>({
+const guardarCartasExito = cartas =>(
+ {
   type:GUARDAR_CARTAS_EXITO,
   payload:cartas
 })

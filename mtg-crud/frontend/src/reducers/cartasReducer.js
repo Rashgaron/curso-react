@@ -1,61 +1,69 @@
 import {
-	BUSCAR_CARTA,
-	BUSCAR_CARTA_ERROR,
-	BUSCAR_CARTA_EXITO,
-	GUARDAR_CARTAS_EXITO,
-	GUARDAR_CARTAS_ERROR,
-	GUARDAR_CARTAS
-} from '../types/index';
-
+  BUSCAR_CARTA,
+  BUSCAR_CARTA_ERROR,
+  BUSCAR_CARTA_EXITO,
+  GUARDAR_CARTAS_EXITO,
+  GUARDAR_CARTAS_ERROR,
+  GUARDAR_CARTAS,
+} from "../types/index";
+import _ from "lodash";
+import chunk from "lodash/chunk";
 const initialState = {
-	cartaBuscar: {},
-	cartas: [],
-	error: null,
-	loading: null,
-	busquedaCorrecta: null,
-	cartasGuardadas: []
+  cartaBuscar: {},
+  cartas: [],
+  error: null,
+  loading: null,
+  busquedaCorrecta: null,
+  cartasGuardadas: [],
 };
 
-export default function(state = initialState, action) {
-	switch (action.type) {
-		case BUSCAR_CARTA:
-			return {
-				...state,
-				loading: true,
-				cartaBuscar: action.payload,
-				busquedaCorrecta: null
-			};
-	
-		case GUARDAR_CARTAS_ERROR:
-		case BUSCAR_CARTA_ERROR:
-			return {
-				...state,
-				loading: null,
-				error: true
-			};
-		case BUSCAR_CARTA_EXITO:
-			return {
-				...state,
-				loading: null,
-				error: null,
-				cartas: action.payload,
-				busquedaCorrecta: true
-			};
-		case GUARDAR_CARTAS_EXITO:
-			let resultado = state.cartasGuardadas.find((carta) => carta.id === action.payload.id);
-			if (resultado) {
-        console.log('ya hay una carta igual');
-        resultado.cantidad+=action.payload.cantidad
-        console.log(resultado)
-				return {
-					...state,
-				};
-			}
-			return {
-				...state,
-				cartasGuardadas: [ ...state.cartasGuardadas, action.payload ]
-			};
-		default:
-			return state;
-	}
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case BUSCAR_CARTA:
+      return {
+        ...state,
+        loading: true,
+        cartaBuscar: action.payload,
+        busquedaCorrecta: null,
+      };
+
+    case GUARDAR_CARTAS_ERROR:
+    case BUSCAR_CARTA_ERROR:
+      return {
+        ...state,
+        loading: null,
+        error: true,
+      };
+    case BUSCAR_CARTA_EXITO:
+      return {
+        ...state,
+        loading: null,
+        error: null,
+        cartas: action.payload,
+        busquedaCorrecta: true,
+      };
+    case GUARDAR_CARTAS_EXITO:
+      const indice = _.findIndex(state.cartasGuardadas, {
+        id: action.payload.id,
+      });
+
+      console.log('Valor del indice: '+indice);
+      console.log('Carta en el array:'+state.cartasGuardadas[indice]);
+      // console.log('Nueva carta:'+JSON.stringify(action.payload))
+      console.log('nueva carta'+action.payload.cantidad)
+      if (indice !== -1) {
+        console.log('Cantidad carta array:'+state.cartasGuardadas[indice].cantidad)
+        console.log('Cantidad carta añadir:'+action.payload.cantidad)
+    
+        return{
+          ...state
+        }
+      }
+      return {
+        ...state,
+        cartasGuardadas: [...state.cartasGuardadas, action.payload],
+      };
+    default:
+      return state;
+  }
 }
