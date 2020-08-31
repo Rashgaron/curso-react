@@ -22,6 +22,7 @@ export function buscarCartaAction(carta) {
         resultado = await clienteAxios.get(`search?q=name%3A${carta.nombre}+lang%3A${carta.language}`)
   
         resultado = resultado.data.data
+        console.log(resultado)
    
       dispatch(buscarCartaExito(resultado));
     } catch (error) {
@@ -49,7 +50,7 @@ const buscarCartaError = () => ({
 
 export function guardarCartasAction(cartas){
   return (dispatch) =>{
-    dispatch(guardarCartas())
+    dispatch(guardarCartas(cartas))
     try {
       console.log(cartas)
       dispatch( guardarCartasExito(cartas))
@@ -61,8 +62,9 @@ export function guardarCartasAction(cartas){
   }
 }
 
-const guardarCartas = ()=>({
-  type:GUARDAR_CARTAS
+const guardarCartas = (cartas)=>({
+  type:GUARDAR_CARTAS,
+  payload:cartas
 })
 const guardarCartasExito = cartas =>(
  {

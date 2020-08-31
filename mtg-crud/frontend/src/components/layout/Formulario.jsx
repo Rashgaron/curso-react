@@ -93,7 +93,7 @@ const Formulario = () => {
         name='language'
       >
         {options.map(option => (
-          <option value={option.value}>{option.language}</option>
+          <option value={option.value} key={option.value}>{option.language}</option>
         ))}
       </select>
       <div className='col'>
