@@ -1,6 +1,12 @@
 import React from 'react';
 const Header = () => {
-    return (<h1>Welcome to MTG DB</h1>  );
-}
- 
+	return (
+		<div className="row header-img">
+			<div className="col d-flex ">
+				<h1 className="title-header">MTG BD</h1>
+			</div>
+		</div>
+	);
+};
+
 export default Header;

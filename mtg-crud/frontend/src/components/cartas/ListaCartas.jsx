@@ -12,7 +12,7 @@ const ListaCartas = () => {
 		return (
 			<Fragment>
 				<div>
-					<div className="row justify-content-center">
+					<div className="row justify-content-center p-3">
 						{busquedaCorrecta ? <h1 className="col-12 text-center">{cartaBusqueda}</h1> : null}
 						{loading ? <p className="col-12 text-center">Cargando</p> : null}
 						{error ? (
