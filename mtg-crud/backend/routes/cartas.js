@@ -17,4 +17,8 @@ router.get('/', cartaController.obtenerCartas);
 
 router.delete('/:id', cartaController.eliminarCarta);
 
+//Editar Carta
+
+router.put('/', cartaController.editarCarta)
+
 module.exports = router;

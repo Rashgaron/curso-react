@@ -5,7 +5,10 @@ import {
   eliminarCartaAction,
   editarCartaAction
 } from '../../actions/cartasActions'
+import _ from 'lodash'
+
 const Carta = ({ carta, length }) => {
+  const cartasGuardadas = useSelector(state => state.carta.cartasGuardadas)
   const dispatch = useDispatch()
   let valorInicial = 0
   if (carta.cantidad) valorInicial = carta.cantidad
@@ -19,10 +22,22 @@ const Carta = ({ carta, length }) => {
   if (!carta.image_uris & !carta.img_large) return null
 
   const guardarCartas = carta => {
-    //Esto lo hago porque si igualo normal, se copia la referencia del objeto y trae problemas
-    let nuevaCarta = JSON.parse(JSON.stringify(carta))
-    nuevaCarta.cantidad = cantidad
-    dispatch(guardarCartaAction(nuevaCarta))
+    let indice = _.findIndex(cartasGuardadas, {
+      id: carta.id
+    })
+
+    if (indice !== -1) {
+      let nuevaCarta = {}
+      nuevaCarta.id = carta.id
+      nuevaCarta.cantidad = cantidad + cartasGuardadas[indice].cantidad
+
+      dispatch(editarCartaAction(nuevaCarta))
+    } else {
+      //Esto lo hago porque si igualo normal, se copia la referencia del objeto y trae problemas
+      let nuevaCarta = JSON.parse(JSON.stringify(carta))
+      nuevaCarta.cantidad = cantidad
+      dispatch(guardarCartaAction(nuevaCarta))
+    }
   }
 
   let miCarta = false

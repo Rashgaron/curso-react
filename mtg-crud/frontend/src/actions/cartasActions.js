@@ -59,6 +59,12 @@ export function guardarCartaAction(carta) {
 			carta.img_large = carta.image_uris.large;
 			await axios.post('https://mtgdb-crud.herokuapp.com/api/cartas', carta);
 			dispatch(guardarCartaExito(carta));
+			Swal.fire({
+				title: 'OK!',
+				text: 'Carta Guardada',
+				icon: 'success',
+				confirmButtonText: 'Cool',
+			});
 		} catch (error) {
 			console.log(error);
 			dispatch(guardarCartaError());
@@ -82,8 +88,14 @@ export function eliminarCartaAction(carta) {
 	return async (dispatch) => {
 		dispatch(eliminarCarta());
 		try {
-      await axios.delete(`https://mtgdb-crud.herokuapp.com/api/cartas/${carta._id}`)
+			await axios.delete(`https://mtgdb-crud.herokuapp.com/api/cartas/${carta._id}`);
 			dispatch(eliminarCartaExito(carta));
+			Swal.fire({
+				title: 'OK!',
+				text: 'Eliminado con éxito',
+				icon: 'success',
+				confirmButtonText: 'Cool',
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -99,10 +111,17 @@ const eliminarCartaExito = (carta) => ({
 });
 
 export function editarCartaAction(carta) {
-	return (dispatch) => {
+	return async (dispatch) => {
 		dispatch(editarCarta());
 		try {
+			await axios.put('https://mtgdb-crud.herokuapp.com/api/cartas', carta);
 			dispatch(editarCartaExito(carta));
+			Swal.fire({
+				title: 'OK!',
+				text: 'Editado con éxito',
+				icon: 'success',
+				confirmButtonText: 'Cool',
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -120,6 +139,7 @@ const editarCartaExito = (carta) => ({
 
 export function descargarCartasAction() {
 	return async (dispatch) => {
+		dispatch(descargarCartas());
 		try {
 			const resultado = await axios.get('https://mtgdb-crud.herokuapp.com/api/cartas');
 			dispatch(descargarCartasExito(resultado.data.cartas));
@@ -128,8 +148,10 @@ export function descargarCartasAction() {
 		}
 	};
 }
+const descargarCartas = () => ({
+	type: DESCARGAR_CARTAS,
+});
 const descargarCartasExito = (cartas) => ({
 	type: DESCARGAR_CARTAS_EXITO,
 	payload: cartas,
 });
-

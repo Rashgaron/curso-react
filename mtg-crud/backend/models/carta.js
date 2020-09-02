@@ -26,6 +26,11 @@ const CartaSchema = mongoose.Schema({
 		required: true,
 		trim: true,
 	},
+	propietario:{
+		type:'String',
+		required:true,
+		default:123
+	}
 });
 
 

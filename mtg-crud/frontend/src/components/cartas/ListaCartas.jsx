@@ -8,13 +8,14 @@ const ListaCartas = ({ seccion }) => {
 
   let cartas = misCartas
   if (seccion === 'Busqueda') cartas = busqueda
-   const cartaBusqueda = useSelector(state => state.carta.cartaBuscar.nombre)
+  const cartaBusqueda = useSelector(state => state.carta.cartaBuscar.nombre)
   const loading = useSelector(state => state.carta.loading)
   const error = useSelector(state => state.carta.error)
   const busquedaCorrecta = useSelector(state => state.carta.busquedaCorrecta)
   let mostrarBusqueda = false
 
   if ((seccion === 'Busqueda') & busquedaCorrecta) mostrarBusqueda = true
+  if (loading) return <p className='col-12 text-center'>Cargando</p>
   if ((seccion !== 'Busqueda') & (cartas.length === 0))
     return (
       <div className='row justify-content-center mt-2'>
@@ -35,7 +36,6 @@ const ListaCartas = ({ seccion }) => {
             </p>
           ) : (
             <div className='row justify-content-around'>
-             
               {cartas.map(carta => (
                 <Carta key={carta.id} carta={carta} length={cartas.length} />
               ))}
