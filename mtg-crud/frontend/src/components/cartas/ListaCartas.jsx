@@ -8,8 +8,7 @@ const ListaCartas = ({ seccion }) => {
 
   let cartas = misCartas
   if (seccion === 'Busqueda') cartas = busqueda
-
-  const cartaBusqueda = useSelector(state => state.carta.cartaBuscar.nombre)
+   const cartaBusqueda = useSelector(state => state.carta.cartaBuscar.nombre)
   const loading = useSelector(state => state.carta.loading)
   const error = useSelector(state => state.carta.error)
   const busquedaCorrecta = useSelector(state => state.carta.busquedaCorrecta)
@@ -36,6 +35,7 @@ const ListaCartas = ({ seccion }) => {
             </p>
           ) : (
             <div className='row justify-content-around'>
+             
               {cartas.map(carta => (
                 <Carta key={carta.id} carta={carta} length={cartas.length} />
               ))}

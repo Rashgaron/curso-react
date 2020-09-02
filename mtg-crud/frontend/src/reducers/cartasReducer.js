@@ -9,7 +9,7 @@ import {
   ELIMINAR_CARTA_EXITO,
   EDITAR_CARTA,
   EDITAR_CARTA_EXITO,
-  EDITAR_CARTA_ERROR,
+  EDITAR_CARTA_ERROR, DESCARGAR_CARTAS_EXITO
 } from "../types/index";
 import _ from "lodash";
 import chunk from "lodash/chunk";
@@ -94,6 +94,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
       };
+
+      case DESCARGAR_CARTAS_EXITO:
+        return{
+          ...state,
+          cartasGuardadas:action.payload
+        }
     default:
       return state;
   }

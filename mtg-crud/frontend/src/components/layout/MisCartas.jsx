@@ -1,12 +1,16 @@
-import React from 'react';
-import {useSelector} from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import ListaCartas from '../cartas/ListaCartas'
-
+import { descargarCartasAction } from '../../actions/cartasActions'
 const MisCartas = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(descargarCartasAction())
+  }, [])
 
-const misCartas = useSelector(state=>state.carta.cartasGuardadas)
-console.log(misCartas)
-    return ( <ListaCartas seccion='MisCartas'></ListaCartas> );
+  const misCartas = useSelector(state => state.carta.cartasGuardadas)
+  
+  return <ListaCartas seccion='MisCartas'></ListaCartas>
 }
- 
-export default MisCartas;
+
+export default MisCartas

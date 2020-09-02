@@ -16,7 +16,7 @@ const Carta = ({ carta, length }) => {
     if (cantidad === 0 && e < 0) return
     if (cantidad >= 0) guardarCantidad(cantidad + e)
   }
-  if (!carta.image_uris) return null
+  if (!carta.image_uris & !carta.img_large) return null
 
   const guardarCartas = carta => {
     //Esto lo hago porque si igualo normal, se copia la referencia del objeto y trae problemas
@@ -26,19 +26,28 @@ const Carta = ({ carta, length }) => {
   }
 
   let miCarta = false
-  if (carta.cantidad || carta.cantidad === 0) miCarta = true
+  if (carta.cantidad || carta.cantidad === 0) {
+    miCarta = true
+  }
 
-  console.log(carta.cantidad)
   if (length === 1) {
     return (
       <Fragment>
         <div className='col-12   justify-content-center d-flex'>
           <div className='card col-8 col-md-7 m-1 pt-3'>
-            <img
-              alt={carta.name}
-              src={carta.image_uris.large}
-              className='w-100 img-card'
-            />
+            {miCarta ? (
+              <img
+                alt={carta.name}
+                src={carta.img_large}
+                className='w-100 img-card'
+              />
+            ) : (
+              <img
+                alt={carta.name}
+                src={carta.image_uris.large}
+                className='w-100 img-card'
+              />
+            )}
 
             <div className='card-body'>
               <div className='row'>
@@ -108,16 +117,24 @@ const Carta = ({ carta, length }) => {
         </div>
       </Fragment>
     )
-  } else
+  } else {
     return (
       <Fragment>
         <div className='col-12 col-md-5 col-lg-4 col-xl-3  justify-content-center d-flex'>
           <div className='card col-8 col-md-12 col-sm-7 m-1 pt-3'>
-            <img
-              alt={carta.name}
-              src={carta.image_uris.large}
-              className='w-100 img-card'
-            />
+            {miCarta ? (
+              <img
+                alt={carta.name}
+                src={carta.img_large}
+                className='w-100 img-card'
+              />
+            ) : (
+              <img
+                alt={carta.name}
+                src={carta.image_uris.large}
+                className='w-100 img-card'
+              />
+            )}
 
             <div className='card-body'>
               <div className='row'>
@@ -188,6 +205,7 @@ const Carta = ({ carta, length }) => {
         </div>
       </Fragment>
     )
+  }
 }
 
 export default Carta
