@@ -3,10 +3,11 @@ import Formulario from './Formulario';
 import ListaCartas from '../cartas/ListaCartas';
 const Busqueda = () => {
 	return (
-		<Fragment>
+		<div className='busqueda-container'>
+			<h1>Buscador:</h1>
 			<Formulario />
-			<ListaCartas />
-		</Fragment>
+			<ListaCartas seccion='Busqueda' />
+		</div>
 	);
 };
 

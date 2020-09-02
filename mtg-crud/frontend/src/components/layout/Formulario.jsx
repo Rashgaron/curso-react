@@ -67,8 +67,10 @@ const Formulario = () => {
 
 		dispatch(buscarCartaAction(carta));
 		guardarCarta({
-			nombre: '',
-			language: 'en'
+			
+			...carta,
+			nombre:''
+			
 		});
 	};
 

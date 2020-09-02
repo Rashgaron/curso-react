@@ -3,7 +3,7 @@ const Header = () => {
 	return (
 		<div className="row header-img">
 			<div className="col d-flex ">
-				<h1 className="title-header">MTG BD</h1>
+				<h1 className="title-header">MTG DB</h1>
 			</div>
 		</div>
 	);
