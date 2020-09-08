@@ -11,7 +11,7 @@ router.post('/', cartaController.agregarCarta);
 
 // Obtener Cartas
 
-router.get('/', cartaController.obtenerCartas);
+router.get('/:id', cartaController.obtenerCartas);
 
 // Eliminar Cartas
 

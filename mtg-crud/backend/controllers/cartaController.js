@@ -19,7 +19,7 @@ exports.agregarCarta = async (req, res) => {
 };
 exports.obtenerCartas = async (req, res) => {
 	try {
-		const cartas = await Carta.find();
+		const cartas = await Carta.find({propietario:req.params.id});
 		res.status(200).json({ cartas });
 	} catch (error) {
 		console.log(error);

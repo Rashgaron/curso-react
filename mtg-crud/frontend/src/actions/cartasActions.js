@@ -13,6 +13,7 @@ import {
 	DESCARGAR_CARTAS,
 	DESCARGAR_CARTAS_ERROR,
 	DESCARGAR_CARTAS_EXITO,
+	LOGOUT,
 } from '../types/index';
 
 import clienteAxios from '../config/axios';
@@ -57,7 +58,7 @@ export function guardarCartaAction(carta) {
 		try {
 			console.log(carta);
 			carta.img_large = carta.image_uris.large;
-			await axios.post('https://mtgdb-crud.herokuapp.com/api/cartas', carta);
+			await axios.post('https://mtg-db-app.herokuapp.com/api/cartas', carta);
 			dispatch(guardarCartaExito(carta));
 			Swal.fire({
 				title: 'OK!',
@@ -88,7 +89,7 @@ export function eliminarCartaAction(carta) {
 	return async (dispatch) => {
 		dispatch(eliminarCarta());
 		try {
-			await axios.delete(`https://mtgdb-crud.herokuapp.com/api/cartas/${carta._id}`);
+			await axios.delete(`https://mtg-db-app.herokuapp.com/api/cartas/${carta._id}`);
 			dispatch(eliminarCartaExito(carta));
 			Swal.fire({
 				title: 'OK!',
@@ -114,7 +115,7 @@ export function editarCartaAction(carta) {
 	return async (dispatch) => {
 		dispatch(editarCarta());
 		try {
-			await axios.put('https://mtgdb-crud.herokuapp.com/api/cartas', carta);
+			await axios.put('https://mtg-db-app.herokuapp.com/api/cartas', carta);
 			dispatch(editarCartaExito(carta));
 			Swal.fire({
 				title: 'OK!',
@@ -137,11 +138,11 @@ const editarCartaExito = (carta) => ({
 	payload: carta,
 });
 
-export function descargarCartasAction() {
+export function descargarCartasAction(propietario) {
 	return async (dispatch) => {
 		dispatch(descargarCartas());
 		try {
-			const resultado = await axios.get('https://mtgdb-crud.herokuapp.com/api/cartas');
+			const resultado = await axios.get(`https://mtg-db-app.herokuapp.com/api/cartas/${propietario}`);
 			dispatch(descargarCartasExito(resultado.data.cartas));
 		} catch (error) {
 			console.log(error);
@@ -155,3 +156,13 @@ const descargarCartasExito = (cartas) => ({
 	type: DESCARGAR_CARTAS_EXITO,
 	payload: cartas,
 });
+
+export function logoutAction(){
+	return dispatch =>{
+		dispatch(logout())
+	}
+}
+
+const logout = ()=>({
+	type:LOGOUT
+})

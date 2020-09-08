@@ -12,6 +12,7 @@ import {
 	EDITAR_CARTA_ERROR,
 	DESCARGAR_CARTAS_EXITO,
 	DESCARGAR_CARTAS,
+	LOGOUT,
 } from '../types/index';
 import _ from 'lodash';
 import chunk from 'lodash/chunk';
@@ -22,6 +23,7 @@ const initialState = {
 	loading: null,
 	busquedaCorrecta: null,
 	cartasGuardadas: [],
+	cartaGuardada: true,
 };
 let indice;
 export default function (state = initialState, action) {
@@ -60,11 +62,13 @@ export default function (state = initialState, action) {
 				state.cartasGuardadas[indice].cantidad += action.payload.cantidad;
 				return {
 					...state,
+					cartaGuardada: true,
 				};
 			}
 			return {
 				...state,
 				cartasGuardadas: [...state.cartasGuardadas, action.payload],
+				cartaGuardada: true,
 			};
 
 		case GUARDAR_CARTAS:
@@ -94,10 +98,12 @@ export default function (state = initialState, action) {
 				state.cartasGuardadas[indice] = action.payload;
 				return {
 					...state,
+					cartaGuardada: true,
 				};
 			}
 			return {
 				...state,
+				cartaGuardada: true,
 			};
 
 		case DESCARGAR_CARTAS_EXITO:
@@ -105,6 +111,18 @@ export default function (state = initialState, action) {
 				...state,
 				loading: null,
 				cartasGuardadas: action.payload,
+				cartaGuardada: false,
+			};
+
+		case LOGOUT:
+			return {
+				cartaBuscar: {},
+				cartas: [],
+				error: null,
+				loading: null,
+				busquedaCorrecta: null,
+				cartasGuardadas: [],
+				cartaGuardada: true,
 			};
 		default:
 			return state;
