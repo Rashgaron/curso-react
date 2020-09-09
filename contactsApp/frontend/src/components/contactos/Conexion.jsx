@@ -12,6 +12,7 @@ const Conexion = ({ conexion }) => {
     dispatch(seleccionarContactoAction(conexion))
     dispatch(buscarConexionesAction())
   }
+  if(conexion.end ==='true') return null
 
   return (
     <div className='m-3 caja-conexion' onClick={handleClick}>

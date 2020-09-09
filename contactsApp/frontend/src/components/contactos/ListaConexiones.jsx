@@ -46,7 +46,7 @@ const ListaConexiones = () => {
             </div>
           ))}
 
-          <div className='col'>
+          <div className='col-12'>
             <Paginacion
               pagina={pagina}
               guardarPagina={guardarPagina}

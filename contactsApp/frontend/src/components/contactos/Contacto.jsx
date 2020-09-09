@@ -17,6 +17,8 @@ const Contacto = ({ contacto   }) => {
     dispatch(buscarConexionesAction())
      
   }
+
+  if(contacto.end === 'true') return null
   return (
     <Lista>
       <a href='#' className='enlace-contacto' onClick={handleClick}>

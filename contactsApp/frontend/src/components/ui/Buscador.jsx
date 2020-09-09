@@ -5,10 +5,10 @@ const Buscador = ({tipo}) => {
   const [buscar, guardarBuscar] = useState('')
   const dispatch = useDispatch()
   useEffect(() => {
-    if (buscar.trim() !== '') {
+    
       
       dispatch(buscarContactoAction(buscar,tipo))
-    }
+    
   }, [buscar])
   return (
     <input

@@ -83,11 +83,12 @@ const descargarContactosExito = (contactos) => ({
 
 // Buscar contacto
 
-export function buscarContactoAction(busqueda,tipo) {
+export function buscarContactoAction(busqueda, tipo) {
 	return async (dispatch) => {
 		dispatch(buscarContacto());
 		try {
-			dispatch(buscarContactoExito(busqueda,tipo));
+			if (busqueda.trim === '') return;
+			dispatch(buscarContactoExito(busqueda, tipo));
 		} catch (error) {
 			console.log(error);
 		}
@@ -98,7 +99,7 @@ const buscarContacto = () => ({
 	type: BUSCAR_CONTACTO,
 });
 
-const buscarContactoExito = (busqueda,tipo) => ({
+const buscarContactoExito = (busqueda, tipo) => ({
 	type: BUSCAR_CONTACTO_EXITO,
-	payload: {busqueda,tipo},
+	payload: { busqueda, tipo },
 });

@@ -40,6 +40,7 @@ export default function (state = initialState, action) {
 					}
 					if (insertar) state.busqueda.push(state.contactos[i]);
 				}
+				state.busqueda.push({'end':'true'})
 			} else if ((action.payload.tipo = 'conexiones')) {
 				for (let i = 0; i < state.contactosConectados.length; i++) {
 					let insertar = true;
@@ -52,6 +53,7 @@ export default function (state = initialState, action) {
 					}
 					if (insertar) state.busquedaConectados.push(state.contactosConectados[i]);
 				}
+				state.busquedaConectados.push({'end':'true'})
 			}
 
 			return { ...state };
@@ -60,6 +62,8 @@ export default function (state = initialState, action) {
 				...state,
 				contactoSeleccionado: action.payload,
 				contactosConectados: [],
+				busqueda: [],
+				busquedaConectados: [],
 			};
 
 		case BUSCAR_CONEXIONES:
@@ -80,6 +84,8 @@ export default function (state = initialState, action) {
 
 			return {
 				...state,
+				busqueda: [],
+				busquedaConectados: [],
 			};
 		case BUSCAR_LETRA:
 			state.busqueda = [];
@@ -89,6 +95,7 @@ export default function (state = initialState, action) {
 
 			return {
 				...state,
+				
 			};
 		case DESCARGAR_CONTACTOS:
 			return {
