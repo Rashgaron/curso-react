@@ -88,7 +88,7 @@ const Formulario = () => {
           ></input>
         </div>
 
-        <button className='btn btn-success mt-3'>Sing In</button>
+        <button className='btn btn-success mt-3'>Sign Up</button>
       </form>
       <Link to='/'>Iniciar sesión</Link>
     </>
