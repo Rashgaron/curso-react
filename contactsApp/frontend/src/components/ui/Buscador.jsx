@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import {useDispatch} from 'react-redux'
-import {buscarContactoAction} from '../../actions/contactsActions'
-const Buscador = () => {
-
+import { useDispatch } from 'react-redux'
+import { buscarContactoAction } from '../../actions/contactsActions'
+const Buscador = ({tipo}) => {
   const [buscar, guardarBuscar] = useState('')
-
-  useEffect(()=>{
-    if(buscar.trim() !==''){
-      dispatch(buscarContactoAction(buscar))
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (buscar.trim() !== '') {
+      
+      dispatch(buscarContactoAction(buscar,tipo))
     }
-
-
-  },[])
+  }, [buscar])
   return (
     <input
       className='form-control'
@@ -19,7 +17,7 @@ const Buscador = () => {
       placeholder='Search'
       aria-label='Search'
       value={buscar}
-      onChange={(e)=>guardarBuscar(e.target.value)}
+      onChange={e => guardarBuscar(e.target.value)}
     />
   )
 }

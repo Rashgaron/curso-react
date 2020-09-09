@@ -31,7 +31,7 @@ const Contactos = () => {
       <div className='col-5'>
         <div className='row'>
           <div className='col-12 caja p-3'>
-            <Buscador></Buscador>
+            <Buscador tipo='general'></Buscador>
           </div>
         </div>
         <div className='row'>
@@ -67,7 +67,7 @@ const Contactos = () => {
             )}
           </div>
           <div className='col-4  text-right'>
-            <Buscador></Buscador>
+            <Buscador tipo='conexiones'></Buscador>
             <button className='btn btn-danger mt-1' onClick={handleLogout}>
               Logout
             </button>

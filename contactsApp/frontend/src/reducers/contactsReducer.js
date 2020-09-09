@@ -1,7 +1,16 @@
-import { SELECCIONAR_CONTACTO, BUSCAR_CONEXIONES, BUSCAR_LETRA, DESCARGAR_CONTACTOS ,DESCARGAR_CONTACTOS_EXITO} from '../types';
+import {
+	SELECCIONAR_CONTACTO,
+	BUSCAR_CONEXIONES,
+	BUSCAR_LETRA,
+	DESCARGAR_CONTACTOS,
+	DESCARGAR_CONTACTOS_EXITO,
+	BUSCAR_CONTACTO,
+	BUSCAR_CONTACTO_EXITO,
+} from '../types';
 const initialState = {
 	contactos: [],
 	busqueda: [],
+	busquedaConectados: [],
 	contactosConectados: [],
 	contactoSeleccionado: [],
 	letraSeleccionada: '',
@@ -12,6 +21,40 @@ const initialState = {
 
 export default function (state = initialState, action) {
 	switch (action.type) {
+		case BUSCAR_CONTACTO:
+			return {
+				...state,
+				busqueda: [],
+				busquedaConectados: [],
+			};
+		case BUSCAR_CONTACTO_EXITO:
+			if (action.payload.tipo === 'general') {
+				for (let i = 0; i < state.contactos.length; i++) {
+					let insertar = true;
+
+					for (let j = 0; j < action.payload.busqueda.length; j++) {
+						if (action.payload.busqueda[j] !== state.contactos[i].name[j]) {
+							insertar = false;
+							break;
+						}
+					}
+					if (insertar) state.busqueda.push(state.contactos[i]);
+				}
+			} else if ((action.payload.tipo = 'conexiones')) {
+				for (let i = 0; i < state.contactosConectados.length; i++) {
+					let insertar = true;
+
+					for (let j = 0; j < action.payload.busqueda.length; j++) {
+						if (action.payload.busqueda[j] !== state.contactosConectados[i].name[j]) {
+							insertar = false;
+							break;
+						}
+					}
+					if (insertar) state.busquedaConectados.push(state.contactosConectados[i]);
+				}
+			}
+
+			return { ...state };
 		case SELECCIONAR_CONTACTO:
 			return {
 				...state,
@@ -53,11 +96,11 @@ export default function (state = initialState, action) {
 				loading: true,
 			};
 		case DESCARGAR_CONTACTOS_EXITO:
-			return{
+			return {
 				...state,
-				loading:false,
-				contactos:action.payload
-			}
+				loading: false,
+				contactos: action.payload,
+			};
 		default:
 			return state;
 	}

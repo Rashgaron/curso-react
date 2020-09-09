@@ -5,6 +5,8 @@ import {
 	BUSCAR_LETRA,
 	DESCARGAR_CONTACTOS,
 	DESCARGAR_CONTACTOS_EXITO,
+	BUSCAR_CONTACTO,
+	BUSCAR_CONTACTO_EXITO,
 } from '../types';
 
 // Seleccionar contacto
@@ -79,26 +81,24 @@ const descargarContactosExito = (contactos) => ({
 	payload: contactos,
 });
 
-
 // Buscar contacto
 
-export function buscarContactoAction(busqueda){
-	return async(dispatch)=>{
-		dispatch(buscarContacto())
+export function buscarContactoAction(busqueda,tipo) {
+	return async (dispatch) => {
+		dispatch(buscarContacto());
 		try {
-			dispatch(buscarContactoExito(busqueda))
+			dispatch(buscarContactoExito(busqueda,tipo));
 		} catch (error) {
-			console.log(error)
-
+			console.log(error);
 		}
-	}
+	};
 }
 
-const buscarContacto =()=>({
-	type:BUSCAR_CONTACTO
-})
+const buscarContacto = () => ({
+	type: BUSCAR_CONTACTO,
+});
 
-const buscarContactoAction = busqueda=>({
-	type:BUSCAR_CONTACTO_EXITO,
-	payload:busqueda
-})
+const buscarContactoExito = (busqueda,tipo) => ({
+	type: BUSCAR_CONTACTO_EXITO,
+	payload: {busqueda,tipo},
+});
