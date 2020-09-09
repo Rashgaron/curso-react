@@ -17,7 +17,6 @@ const ListaConexiones = () => {
 
   let conexionesMostrar = []
 
-  console.log(busquedaConectados)
   let paginasTotales = 0
   if (conexiones.length !== 0) {
     if (busquedaConectados.length === 0) {
@@ -41,8 +40,8 @@ const ListaConexiones = () => {
       <>
         <div className='row'>
           {conexionesMostrar.map(conexion => (
-            <div className='col-12 col-md-6 col-lg-4 col-xl-3' key={conexion.id}>
-              <Conexion conexion={conexion}></Conexion>
+            <div className='col-12 col-md-6 col-lg-4 col-xl-3' >
+              <Conexion conexion={conexion} key={conexion.id}n></Conexion>
             </div>
           ))}
 

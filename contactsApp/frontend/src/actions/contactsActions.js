@@ -8,6 +8,8 @@ import {
 	BUSCAR_CONTACTO,
 	BUSCAR_CONTACTO_EXITO,
 } from '../types';
+// import {useDispatch} from 'react-redux'
+import {usuarioAutenticadoAction} from './authActions'
 
 // Seleccionar contacto
 
@@ -64,9 +66,9 @@ const buscarLetra = (letra) => ({
 export function descargarContactosAction() {
 	return async (dispatch) => {
 		dispatch(descargarContactos());
+		dispatch(usuarioAutenticadoAction())
 		try {
 			const contactos = await clienteAxios.get('contacts');
-			console.log(contactos.data);
 			dispatch(descargarContactosExito(contactos.data));
 		} catch (error) {
 			console.log(error);
