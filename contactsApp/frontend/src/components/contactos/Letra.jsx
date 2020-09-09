@@ -7,7 +7,7 @@ const Letra = ({ letra }) => {
     dispatch(buscarLetraAction(letra))
   }
   return (
-    <button className='btn-letra' onClick={handleClick}>
+    <button className='btn-letra col-12  ' onClick={handleClick}>
       {letra}
     </button>
   )

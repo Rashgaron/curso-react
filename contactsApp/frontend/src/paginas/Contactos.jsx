@@ -9,7 +9,9 @@ import {
   cerrarSesionAction,
   usuarioAutenticadoAction
 } from '../actions/authActions'
-// import ReactSpinner from 'react-spinjs';
+import styled from '@emotion/styled'
+
+
 const Contactos = () => {
   const contactoSeleccionado = useSelector(
     state => state.contacts.contactoSeleccionado
@@ -19,9 +21,11 @@ const Contactos = () => {
 
   useEffect(() => {
     dispatch(descargarContactosAction())
+    // eslint-disable-next-line
   }, [])
   useEffect(() => {
     dispatch(usuarioAutenticadoAction())
+    // eslint-disable-next-line
   }, [])
   const handleLogout = () => {
     dispatch(cerrarSesionAction())
@@ -34,24 +38,24 @@ const Contactos = () => {
             <Buscador tipo='general'></Buscador>
           </div>
         </div>
-        <div className='row'>
-          <div className='col-2 caja'>
+        <div className='row  d-md-flex contenedor-lateral mt-2'>
+          <div className='col-2 d-none d-md-flex caja p-0 '>
             <ListaLetras></ListaLetras>
           </div>
-          <div className='col-10 caja'>
+          <div className='col-9 caja'>
             <ListaNombres></ListaNombres>
           </div>
         </div>
       </div>
       <div className='col-7'>
         <div className='row caja p-3'>
-          <div className='col-8'>
+          <div className='col-12 col-lg-6'>
             {contactoSeleccionado.length === 0 ? (
-              <h3>Seleccione un contacto</h3>
+              <h3 className='titulo'>Seleccione un contacto</h3>
             ) : (
               <>
                 <div className='row'>
-                  <div className='col-3'>
+                  <div className='col-6 col-lg-5'>
                     <img
                       src={contactoSeleccionado.avatar}
                       alt='avatar'
@@ -59,21 +63,21 @@ const Contactos = () => {
                     ></img>
                   </div>
 
-                  <div className='col-6 mt-auto mb-auto d-flex'>
-                    <h3>{contactoSeleccionado.name}</h3>
+                  <div className='col-6 col-lg-7 mt-auto mb-auto d-flex'>
+                    <h3 className='titulo'>{contactoSeleccionado.name}</h3>
                   </div>
                 </div>
               </>
             )}
           </div>
-          <div className='col-4  text-right'>
+          <div className='col-12 col-lg-6  text-right'>
             <Buscador tipo='conexiones'></Buscador>
             <button className='btn btn-danger mt-1' onClick={handleLogout}>
               Logout
             </button>
           </div>
         </div>
-        <div className='row'>
+        <div className='row contenedor-derecho mt-2'>
           <div className='col caja'>
             <ListaConexiones></ListaConexiones>
           </div>

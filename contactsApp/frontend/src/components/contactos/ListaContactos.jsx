@@ -33,7 +33,7 @@ const ListaContactos = () => {
 
     return (
       <>
-        <ul>
+        <ul className='p-0'>
           {contactosMostrar.map(contacto => (
             <Contacto key={contacto.id} contacto={contacto}></Contacto>
           ))}

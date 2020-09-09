@@ -15,8 +15,8 @@ const Formulario = () => {
   })
 
   const { email, password, remember } = usuario
-
-  const[error, guardarError] = useState(false)
+  const [sucedeError, guardarSucedeError] = useState(false)
+  const [error, guardarError] = useState(false)
   const handleChange = e => {
     guardarUsuario({
       ...usuario,
@@ -34,19 +34,39 @@ const Formulario = () => {
   useEffect(() => {
     if (autenticado) history.push('/contactos')
   }, [mensaje, autenticado, history])
- 
+
+  useEffect(() => {
+    if (mensaje) guardarSucedeError(true)
+
+    setInterval(function () {
+      guardarSucedeError(false)
+    }, 6000)
+  }, [mensaje])
+
   const handleSubmit = e => {
     e.preventDefault()
     if (email.trim() === '' || password.trim() === '') {
+      guardarError(true)
+
+      setInterval(function () {
+        guardarError(false)
+      }, 6000)
       return
     } else {
+      guardarError(false)
       dispatch(registrarUsuarioAction({ email, password }))
     }
   }
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {mensaje ? <p className='alert alert-danger'>{mensaje.msg}</p> : null}
+        {sucedeError ? (
+          <p className='alert alert-danger'>{mensaje.msg}</p>
+        ) : null}
+        {error ? (
+          <p className='alert alert-danger'>Fallo con contraseña o email</p>
+        ) : null}
+
         <div className='form-group'>
           <input
             className='form-control'
@@ -68,7 +88,7 @@ const Formulario = () => {
           ></input>
         </div>
 
-        <button className='btn btn-success mt-3'>Login</button>
+        <button className='btn btn-success mt-3'>Sing In</button>
       </form>
       <Link to='/'>Iniciar sesión</Link>
     </>

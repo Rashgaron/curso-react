@@ -41,7 +41,7 @@ const ListaConexiones = () => {
       <>
         <div className='row'>
           {conexionesMostrar.map(conexion => (
-            <div className='col-3' key={conexion.id}>
+            <div className='col-12 col-md-6 col-lg-4 col-xl-3' key={conexion.id}>
               <Conexion conexion={conexion}></Conexion>
             </div>
           ))}

@@ -33,9 +33,11 @@ let letras = [
 const ListaLetras = () => {
   return (
     <>
-      {letras.map(letra => (
-        <Letra key={letra} letra={letra}></Letra>
-      ))}
+      <div className='col-12  p-0 justify-content-center ml-lg-3 '>
+        {letras.map(letra => (
+          <Letra key={letra} letra={letra}></Letra>
+        ))}
+      </div>
     </>
   )
 }

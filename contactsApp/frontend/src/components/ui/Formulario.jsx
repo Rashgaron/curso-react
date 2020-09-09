@@ -6,13 +6,14 @@ const Formulario = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const autenticado = useSelector(state => state.auth.autenticado)
-  const mensaje = useSelector(state => state.auth.mensaje)
-   const [usuario, guardarUsuario] = useState({
+  let mensaje = useSelector(state => state.auth.mensaje)
+  const [usuario, guardarUsuario] = useState({
     email: '',
     password: '',
     remember: false
   })
 
+  const [error, guardarError] = useState(false)
   const { email, password, remember } = usuario
 
   const handleChange = e => {
@@ -44,12 +45,29 @@ const Formulario = () => {
         ['remember']: rem === 'true'
       })
     }
+    // eslint-disable-next-line
   }, [])
+
+  const [sucedeError, guardarSucedeError] = useState(false)
+  useEffect(() => {
+    if (mensaje) guardarSucedeError(true)
+
+    setInterval(function () {
+      guardarSucedeError(false)
+    }, 6000)
+  }, [mensaje])
+
   const handleSubmit = e => {
     e.preventDefault()
     if (email.trim() === '' || password.trim() === '') {
+      guardarError(true)
+
+      setInterval(function () {
+        guardarError(false)
+      }, 6000)
       return
     } else {
+      guardarError(false)
       dispatch(iniciarSesionAction({ email, password }))
     }
     localStorage.setItem('remember', remember)
@@ -61,7 +79,12 @@ const Formulario = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {mensaje ? <p className='alert alert-danger'>{mensaje.msg}</p> : null}
+        {sucedeError ? (
+          <p className='alert alert-danger'>{mensaje.msg}</p>
+        ) : null}
+        {error ? (
+          <p className='alert alert-danger'>Fallo con contraseña o email</p>
+        ) : null}
         <div className='form-group'>
           <input
             className='form-control'

@@ -7,8 +7,8 @@ const Buscador = ({tipo}) => {
   useEffect(() => {
     
       
-      dispatch(buscarContactoAction(buscar,tipo))
-    
+      dispatch(buscarContactoAction(buscar.trim(),tipo))
+    // eslint-disable-next-line
   }, [buscar])
   return (
     <input

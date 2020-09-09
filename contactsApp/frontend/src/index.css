@@ -9,13 +9,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.container {
+  background-color: #f2f2f2;
+  padding: 25px;
+  margin-top: 15px;
+}
+
 .contenedor-inicio {
   box-shadow: 0px 1px 2px gray, 1px 2px 3px gray;
   border-radius: 5px;
 }
 
 .caja {
-  border: 1px solid black;
+  margin: 5px;
+  box-shadow: 0px 1px 2px black, 1px 2px 3px black;
+  border-radius: 5px;
+  background-color: #ddd;
+}
+
+.contenedor-lateral {
+  max-height: 1000px;
+  overflow-y: scroll;
+}
+
+.contenedor-derecho {
+  max-height: 1250px;
+  overflow-y: scroll;
 }
 
 .btn-letra {
@@ -23,10 +42,17 @@ code {
   margin: 5px;
   border-radius: 5px;
   box-shadow: 0px 1px 2px gray;
+  background-color: white;
 }
 
 .enlace-contacto {
   color: black;
+}
+
+@media (max-width:500px) {
+  .enlace-contacto {
+    font-size: 10px;
+  }
 }
 
 .enlace-contacto:hover {
@@ -34,12 +60,22 @@ code {
   color: black;
 }
 
-.caja-conexion{
+.caja-conexion {
   border: 1px solid black;
-  cursor:pointer;
+  cursor: pointer;
   transition: all .3s;
+  background: white;
+  padding: 10px;
+  box-shadow: 0px 1px 2px black, 1px 2px 3px black;
+  border-radius: 5px;
 }
 
-.caja-conexion:hover{
-  transform: scale(1.1,1.1);
+.caja-conexion:hover {
+  transform: scale(1.1, 1.1);
+}
+
+@media (max-width:500px) {
+  .titulo {
+    font-size: 15px;
+  }
 }
