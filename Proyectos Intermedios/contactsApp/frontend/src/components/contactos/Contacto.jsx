@@ -9,7 +9,7 @@ const Lista = styled.li`
   list-style: none;
 `
 
-const Contacto = ({ contacto   }) => {
+const Contacto = ({ contacto }) => {
   const dispatch = useDispatch()
 
   const handleClick = e => {
