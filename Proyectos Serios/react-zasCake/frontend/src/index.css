@@ -26,34 +26,15 @@ body {
 }
 
 .home-background {
-  /* The image used */
-  background-image: url("./assets/body-background2.jpg");
-  /* Set a specific height */
+
   min-height: 800px;
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
 }
 
-.home-background2 {
-  /* The image used */
-  background-image: url("./assets/fondo2.jpg");
-  /* Set a specific height */
-  min-height: 500px;
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
-.container-fluid {
-  /* height: 1800px; */
-  /* height: 1000px; */
-  /* background-color: #414749; */
-}
+
+
+
 
 .tarjeta {
   transition: all .3s;
@@ -67,6 +48,29 @@ body {
   min-height: 400px;
   background-position: center;
   background-size: cover;
+}
+
+.icon {
+  transition: all .3s;
+}
+.icon:hover{
+  transform: scale(1.1,1.1);
+}
+
+.instagram {
+  background-image: url('assets/socialMedia/001-instagram.png');
+}
+.facebook{
+  background-image: url('assets/socialMedia/facebook.png');
+
+}
+.whatsapp{
+  background-image: url('assets/socialMedia/whatsapp.png');
+
+}
+.gmail{
+  background-image: url('assets/socialMedia/gmail.png');
+
 }
 
 @media (min-width:768px) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/Logo/logo.png'
 const Navbar = () => {
   return (
     <nav className='navbar navbar-expand-md navbar-light bg-light w-100'>
@@ -18,11 +18,13 @@ const Navbar = () => {
       <div className='collapse navbar-collapse row' id='navbarSupportedContent'>
         <ul className='navbar-nav mr-auto col-12 col-md-5 justify-content-around'>
           <li className='nav-item active'>
+            {/* eslint-disable-next-line */}
             <a className='nav-link enlace-header' href='#'>
               Home
             </a>
           </li>
           <li className='nav-item active'>
+            {/* eslint-disable-next-line */}
             <a className='nav-link enlace-header' href='#'>
               Contacto
             </a>
@@ -33,11 +35,13 @@ const Navbar = () => {
         </div>
         <ul className='navbar-nav mr-auto col-12 col-md-5 justify-content-around'>
           <li className='nav-item active '>
+            {/* eslint-disable-next-line */}
             <a className='nav-link enlace-header' href='#'>
               Blog
             </a>
           </li>
           <li className='nav-item active'>
+            {/* eslint-disable-next-line */}
             <a className='nav-link enlace-header' href='#'>
               Local
             </a>

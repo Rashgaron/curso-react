@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Tarjeta from './Tarjeta'
-import ImagenPrueba from '../../assets/imagenPrueba.png'
-import Cupcake from '../../assets/cupcake.png'
-import Galleta from '../../assets/galletas.png'
+import ImagenPrueba from '../../assets/Articles/imagenPrueba.png'
+import Cupcake from '../../assets/Articles/cupcake.png'
+import Galleta from '../../assets/Articles/galletas.png'
 import styled from '@emotion/styled'
 const TituloArticulos = styled.h1`
   font-size: 40px;
@@ -56,7 +56,7 @@ const TarjetasArticulos = () => {
 
       <div className='col-12 d-sm-flex justify-content-around pb-5'>
         {tarjetas.map(tarjeta => (
-          <Tarjeta tarjeta={tarjeta}></Tarjeta>
+          <Tarjeta tarjeta={tarjeta} key={tarjeta.titulo}></Tarjeta>
         ))}
       </div>
     </div>

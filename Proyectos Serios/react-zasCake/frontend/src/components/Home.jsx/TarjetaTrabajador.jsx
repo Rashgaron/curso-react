@@ -9,7 +9,7 @@ const TextoTrabajador = styled.p`
 const TarjetaTrabajador = () => {
   return (
     <>
-      <div className='col-10 d-md-flex bg-light mt-5 mb-5 p-3'>
+      <div className='col-9 d-md-flex bg-light mt-5 mb-5 p-3'>
         <div className='col-12 col-md-5 p-0'>
           <div className='imagen-trabajador '></div>
         </div>
@@ -29,6 +29,10 @@ const TarjetaTrabajador = () => {
           </TextoTrabajador>
         </div>
       </div>
+
+ 
+
+
     </>
   )
 }
