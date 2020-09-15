@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import firebase from '../firebase/config';
 
-// Log In with firebase
+// Log In with firebasemport 
 
 export function logInAction(email, password) {
 	return async (dispatch) => {

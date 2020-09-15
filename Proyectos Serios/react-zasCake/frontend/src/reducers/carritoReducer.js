@@ -1,10 +1,12 @@
 const initialState = {
-	logged: null,
+	carrito: [],
+	loading: null,
+	error: null,
 };
 
 export default function (state = initialState, action) {
 	switch (action.type) {
 		default:
-			return null;
+			return state;
 	}
 }

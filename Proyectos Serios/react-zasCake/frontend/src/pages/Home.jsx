@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from '../components/ui/Footer.jsx'
 import TarjetasArticulos from '../components/Home.jsx/TarjetasArticulos'
 import styled from '@emotion/styled'
 import TarjetaTrabajador from '../components/Home.jsx/TarjetaTrabajador'
@@ -38,7 +37,7 @@ const Home = () => {
           </div>
         </Parallax>
 
-        <Footer></Footer>
+        
       </div>
     </>
   )
