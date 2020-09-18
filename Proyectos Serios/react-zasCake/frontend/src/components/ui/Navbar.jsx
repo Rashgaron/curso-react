@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../../assets/Logo/logo.png'
+import {Link} from 'react-router-dom'
 const Navbar = () => {
   return (
     <nav className='navbar navbar-expand-md navbar-light bg-light w-100'>
@@ -19,15 +20,15 @@ const Navbar = () => {
         <ul className='navbar-nav mr-auto col-12 col-md-5 justify-content-around'>
           <li className='nav-item active'>
             {/* eslint-disable-next-line */}
-            <a className='nav-link enlace-header' href='#'>
+            <Link className='nav-link enlace-header' to='/'>
               Home
-            </a>
+            </Link>
           </li>
           <li className='nav-item active'>
             {/* eslint-disable-next-line */}
-            <a className='nav-link enlace-header' href='#'>
+            <Link className='nav-link enlace-header' to='/contacto'>
               Contacto
-            </a>
+            </Link>
           </li>
         </ul>
         <div className='col-2 d-none d-md-flex justify-content-center'>

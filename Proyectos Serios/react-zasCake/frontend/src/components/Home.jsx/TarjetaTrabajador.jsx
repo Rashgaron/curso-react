@@ -29,10 +29,6 @@ const TarjetaTrabajador = () => {
           </TextoTrabajador>
         </div>
       </div>
-
- 
-
-
     </>
   )
 }

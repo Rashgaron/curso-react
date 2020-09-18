@@ -9,26 +9,26 @@ const Header = () => {
 
   const handleClick = () => {
     dispatch(logOutAction())
-    console.log('hola')
   }
 
   return (
     <>
-      <div className='row justify-content-end bg-dark text-light'>
+      <div className='row justify-content-end bg-dark text-light p-1 align-items-center'>
         {!isEmpty ? (
           <div className='col-auto'>
             {/* eslint-disable-next-line */}
-            <a href='#' onClick={handleClick}>
-              SignOut
-            </a>
+            <button
+              className='btn btn-danger btn-sm'
+              onClick={handleClick}
+            >SignOut</button>
           </div>
         ) : (
           <>
             <div className='col-auto'>
-              <Link to='/signIn'>SignIn</Link>
+              <Link to='/signIn' className='btn btn-success'>SignIn</Link>
             </div>
             <div className='col-auto'>
-              <Link to='/logIn'>LogIn</Link>
+              <Link to='/logIn' className='btn btn-primary btn-sm'>LogIn</Link>
             </div>
           </>
         )}

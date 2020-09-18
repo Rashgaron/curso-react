@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Tarjeta from './Tarjeta'
-import ImagenPrueba from '../../assets/Articles/imagenPrueba.png'
+import ImagenPrueba from '../../assets/Articles/pastelCrema.png'
 import Cupcake from '../../assets/Articles/cupcake.png'
 import Galleta from '../../assets/Articles/galletas.png'
 import styled from '@emotion/styled'

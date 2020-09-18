@@ -3,6 +3,8 @@ import Home from './pages/Home';
 import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
 import Login from './pages/Login';
+import SignIn from './pages/SignIn';
+import Contacto from './pages/Contacto';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
@@ -17,6 +19,8 @@ function App() {
 					<Switch>
 						<Route exact path="/" component={Home}></Route>
 						<Route exact path="/logIn" component={Login}></Route>
+						<Route exact path="/signIn" component={SignIn}></Route>
+						<Route exact path="/contacto" component={Contacto}></Route>
 					</Switch>
 				</Router>
 				<Footer></Footer>
