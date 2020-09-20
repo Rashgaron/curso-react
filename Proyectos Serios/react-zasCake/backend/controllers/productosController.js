@@ -2,7 +2,8 @@ const Producto = require("../models/producto");
 
 exports.obtenerProductos = async (req, res) => {
   try {
-    const productos = await Producto.find({categoria_principal:req.params.categoria});
+	
+	const productos = await Producto.find({categoria_principal:req.params.categoria});
     res.status(200).json({ productos});
   } catch (error) {
     console.log(error);
@@ -25,5 +26,19 @@ exports.crearProducto = async (req,res)=>{
 	} catch (error) {
 		console.log(error);
 		res.status(400).json({ msg: error });
+	}
+}
+
+exports.buscarProducto = async (req, res) =>{
+	try {
+		// Buscar segun like
+		let busqueda = req.params.busqueda
+		busqueda = busqueda.toUpperCase()
+		const productos = await Producto.find({nombre: new RegExp(busqueda,'i')})
+		console.log(productos)
+		res.status(200).json({productos})
+	} catch (error) {
+		console.log(error)
+		res.status(400).json({msg: error})
 	}
 }

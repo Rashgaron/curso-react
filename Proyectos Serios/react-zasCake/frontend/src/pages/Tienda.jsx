@@ -5,10 +5,10 @@ const Tienda = () => {
   return (
     <Fragment>
       <div className="row">
-        <div className="col-2">
+        <div className="col-12 col-lg-2 text-center text-md-left">
           <Sidebar></Sidebar>
         </div>
-        <div className="col">
+        <div className="col p-1">
           <ListaProductos></ListaProductos>
         </div>
       </div>
