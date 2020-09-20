@@ -73,6 +73,13 @@ body {
 
 }
 
+.producto{
+  transition: all .3s;
+}
+.producto:hover{
+  transform: scale(1.1,1.1);
+}
+
 @media (min-width:768px) {
   .enlace-header {
     font-size: 30px;
